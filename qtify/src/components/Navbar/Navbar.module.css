@@ -1,0 +1,16 @@
+.wrapper {
+  background-color: var(--mui-palette-primary-main);
+  padding: 0 2rem;
+  width: 100vw;
+  height: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--mui-palette-primary-main);
+}

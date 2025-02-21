@@ -1,0 +1,4 @@
+*.env
+*.vercel
+*.gitattributes
+node_modules/*/**
