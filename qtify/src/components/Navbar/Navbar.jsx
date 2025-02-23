@@ -5,7 +5,6 @@ import { useRef } from "react";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
-  //TODO: fetch the data for the navbar UL ListElement.
   const searchData = useRef(null);
   return (
     <nav className={styles.navbar}>
@@ -18,7 +17,6 @@ export default function Navbar() {
         variant="contained"
         backgroundColor="var(--mui-palette-primary-dark)"
         color="var(--mui-palette-primary-main)"
-        fontWeight="bold"
         size="small"
       >
         Give Feedback

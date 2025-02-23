@@ -1,12 +1,32 @@
 import Navbar from "./components/Navbar/Navbar";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Hero from "./components/Hero/Hero";
 import Section from "./components/Section/Section.jsx";
 import { Box } from "@mui/material";
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import theme from "./components/Theme/Themes";
 export default function App() {
   const theme = createTheme({
     cssVariables: true,
+    typography: {
+      fontFamily: '"Poppins", serif',
+    },
+    components: {
+      MuiButtonBase: {
+        styleOverrides: {
+          root: {
+            fontFamily: '"Poppins", serif !important',
+          },
+        },
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            fontFamily: '"Poppins", serif !important',
+          },
+        },
+      },
+    },
     palette: {
       primary: {
         main: "#34C94B",
