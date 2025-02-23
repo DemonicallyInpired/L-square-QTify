@@ -60,6 +60,7 @@ export default function MusicTabs({ cards }) {
             label={`${item.label}`}
             {...a11yProps(index)}
             sx={{ color: "primary.light" }}
+            key={`tabItem-${index}`}
           />
         ))}
       </Tabs>
@@ -67,9 +68,13 @@ export default function MusicTabs({ cards }) {
       <CustomTabPannels value={value} index={0}>
         <SwiperCards isSong={true} cards={cards} />
       </CustomTabPannels>
-      {tabs.map((item, index) => {
+      {tabs.map((_, index) => {
         return (
-          <CustomTabPannels value={value} index={index + 1}>
+          <CustomTabPannels
+            value={value}
+            index={index + 1}
+            key={`CustomPannelItem-${index}`}
+          >
             {getCategoryData !== undefined ? (
               <SwiperCards
                 isSong={true}

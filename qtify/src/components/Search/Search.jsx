@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./Search.module.css";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
-import { Box } from "@mui/system";
 import useAutocomplete from "@mui/material/useAutocomplete";
 import { styled } from "@mui/system";
 import { truncate } from "../../helpers/helpers";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 
 const Listbox = styled("ul")(({ theme }) => ({
@@ -37,7 +36,7 @@ const Listbox = styled("ul")(({ theme }) => ({
   },
 }));
 
-function Search({ searchData, placeholder }) {
+function Search({ ref, placeholder }) {
   const {
     getRootProps,
     getInputLabelProps,
@@ -48,27 +47,26 @@ function Search({ searchData, placeholder }) {
     groupedOptions,
   } = useAutocomplete({
     id: "use-autocomplete-demo",
-    options: searchData || [],
+    options: [],
     getOptionLabel: (option) => option.title,
   });
 
   const navigate = useNavigate();
   const onSubmit = (e, value) => {
     e.preventDefault();
-    console.log(value);
     navigate(`/album/${value.slug}`);
     //Process form data, call API, set state etc.
   };
 
   return (
-    <Box style={{ position: "relative" }}>
+    <div style={{ position: "relative" }}>
       <form
         className={styles.wrapper}
         onSubmit={(e) => {
           onSubmit(e, value);
         }}
       >
-        <Box {...getRootProps()} sx={{ width: { md: "60vw", xs: "20vw" } }}>
+        <div {...getRootProps()}>
           <input
             name="album"
             className={styles.search}
@@ -76,13 +74,9 @@ function Search({ searchData, placeholder }) {
             required
             {...getInputProps()}
           />
-        </Box>
+        </div>
         <div>
-          <button
-            style={{ height: "10%" }}
-            className={styles.searchButton}
-            type="submit"
-          >
+          <button className={styles.searchButton} type="submit">
             <SearchIcon />
           </button>
         </div>
@@ -90,7 +84,6 @@ function Search({ searchData, placeholder }) {
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => {
-            // console.log(option);
             const artists = option.songs.reduce((accumulator, currentValue) => {
               accumulator.push(...currentValue.artists);
               return accumulator;
@@ -113,7 +106,7 @@ function Search({ searchData, placeholder }) {
           })}
         </Listbox>
       ) : null}
-    </Box>
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Section from "./components/Section/Section.jsx";
 import { Box } from "@mui/material";
+import { useRef } from "react";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import theme from "./components/Theme/Themes";
@@ -40,14 +41,15 @@ export default function App() {
       },
     },
   });
+  let SearchData = useRef([]);
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: theme.palette.primary.dark }}>
-        <Navbar />
+        <Navbar ref={SearchData} />
         <Hero />
-        <Section section="top" />
-        <Section section="new" />
-        <Section isSong={true} section="song" />
+        <Section section="top" ref={SearchData} />
+        <Section section="new" ref={SearchData} />
+        <Section isSong={true} section="song" ref={SearchData} />
       </Box>
     </ThemeProvider>
   );

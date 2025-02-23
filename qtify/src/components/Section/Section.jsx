@@ -1,10 +1,10 @@
 import { Box, Typography, Collapse, Divider } from "@mui/material";
 import axios from "axios";
 import Button from "../Button/Button.jsx";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import CardGrid from "../CardGrids/CardGrids.jsx";
-const Section = ({ section, isSong }) => {
+const Section = ({ section, isSong, ref }) => {
   const [cards, setCards] = useState([]);
   const [expand, setExpand] = useState(false);
   useEffect(() => {
@@ -27,9 +27,18 @@ const Section = ({ section, isSong }) => {
       console.error(err.stack);
     }
   }, []);
+
   const handleExpand = () => {
     setExpand((prevExpand) => !prevExpand);
   };
+  const currValues = useMemo(() => {
+    const appendedCards = cards.filter(
+      (item, index) =>
+        ref.current.find((currItem) => currItem.id !== item.id) === undefined,
+    );
+    ref.current = [...ref.current, ...appendedCards];
+    return ref.current;
+  }, [cards]);
   return (
     <>
       <Box padding={"2rem"}>
