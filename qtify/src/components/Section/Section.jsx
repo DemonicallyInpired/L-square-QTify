@@ -14,7 +14,7 @@ const Section = ({ section, isSong }) => {
         if (isSong) {
           URI = URI.concat("songs");
         } else {
-          URI = URI.concat(`/albums/${section}`);
+          URI = URI.concat(`albums/${section}`);
         }
         const response = await axios.get(URI);
         if (response && response.status) {
