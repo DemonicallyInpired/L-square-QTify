@@ -7,7 +7,9 @@ import {
 } from "@mui/material";
 import { Chip } from "@mui/material";
 import { Box } from "@mui/material";
-const Cards = ({ title, media, follows }) => {
+import { truncate } from "../../helpers/helpers";
+const Cards = ({ title, media, follows, likes, isSong }) => {
+  const labels = follows ? `${follows} Follower` : `${likes} Likes`;
   return (
     <Card
       sx={{
@@ -28,12 +30,12 @@ const Cards = ({ title, media, follows }) => {
           alt="some image"
         />
         <CardActions sx={{ position: "relative" }}>
-          <Chip color="secondary" label={follows} />
+          <Chip color="secondary" label={labels} />
         </CardActions>
       </Box>
       <CardContent>
         <Typography variant="body1" color="var(--mui-palette-primary-light)">
-          {title}
+          {truncate(title, 20)}
         </Typography>
       </CardContent>
     </Card>

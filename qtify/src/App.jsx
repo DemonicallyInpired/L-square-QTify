@@ -27,6 +27,7 @@ export default function App() {
         <Hero />
         <Section section="top" />
         <Section section="new" />
+        <Section isSong={true} section="song" />
       </Box>
     </ThemeProvider>
   );
