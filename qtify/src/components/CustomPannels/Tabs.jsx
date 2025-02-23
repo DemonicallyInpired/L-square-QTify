@@ -25,7 +25,7 @@ export default function MusicTabs({ cards }) {
       console.error(err.stack);
     }
   }, []);
-  const handleChange = (event, newValue) => {
+  const filter = (event, newValue) => {
     setValue(() => newValue);
   };
   const getCategoryData = useMemo(() => {
@@ -48,7 +48,7 @@ export default function MusicTabs({ cards }) {
     <Box sx={{ width: "100%", overflow: "hidden" }}>
       <Tabs
         value={value}
-        onChange={handleChange}
+        onChange={filter}
         araia-label="music-tab"
         variant="scrollable"
       >
