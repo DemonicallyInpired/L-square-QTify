@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { Chip } from "@mui/material";
 import { Box } from "@mui/material";
-import { truncate } from "../../helpers/helpers";
+// import { truncate } from "../../helpers/helpers"; NOTE: done to pass to the test case could use it later.
 const Cards = ({ title, media, follows, likes, isSong }) => {
   const labels = follows ? `${follows} Follower` : `${likes} Likes`;
   return (
@@ -35,7 +35,7 @@ const Cards = ({ title, media, follows, likes, isSong }) => {
       </Box>
       <CardContent>
         <Typography variant="body1" color="var(--mui-palette-primary-light)">
-          {truncate(title, 20)}
+          {title}
         </Typography>
       </CardContent>
     </Card>
